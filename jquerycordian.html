@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery FAQ Accordion</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1d4ed8;
+        }
+
+        .question {
+            width: 100%;
+            padding: 16px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .answer {
+            display: none;
+            padding: 16px;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            line-height: 1.6;
+        }
+
+        .question span {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>❓ Frequently Asked Questions</h2>
+
+    <button class="question">
+        What is jQuery? <span>+</span>
+    </button>
+    <div class="answer">
+        jQuery is a JavaScript library that simplifies HTML
+        manipulation, event handling, and animations.
+    </div>
+
+    <button class="question">
+        What is the purpose of $(document).ready()? <span>+</span>
+    </button>
+    <div class="answer">
+        It ensures that the HTML document is ready before
+        the jQuery code executes.
+    </div>
+
+    <button class="question">
+        What does the hide() method do? <span>+</span>
+    </button>
+    <div class="answer">
+        The hide() method hides the selected HTML element.
+    </div>
+
+    <button class="question">
+        What does the animate() method do? <span>+</span>
+    </button>
+    <div class="answer">
+        The animate() method gradually changes supported CSS
+        properties to create animations.
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        $(".question").click(function() {
+
+            let answer = $(this).next(".answer");
+            let isOpen = answer.is(":visible");
+
+            // Close all answers
+            $(".answer").stop(true, true).slideUp(300);
+            $(".question span").text("+");
+
+            // Open the selected answer if it was closed
+            if (!isOpen) {
+                answer.stop(true, true).slideDown(300);
+                $(this).find("span").text("-");
+            }
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
